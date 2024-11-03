@@ -23,7 +23,7 @@ func (s *PythonService) Load(r io.ReadCloser) (err error) {
 	return
 }
 
-func (s *PythonService) Generate() (bundles []common.Bundle, err error) {
+func (s *PythonService) GenerateBundles() (bundles []common.Bundle, err error) {
 	re := regexp.MustCompile(`@app\.route\(\s*[\s\S]*?\)`)
 	re2 := regexp.MustCompile(`@app.route\("([^"]+)",methods=\[([^\]]+)\]`)
 	reStr := regexp.MustCompile(`<string:(\w+)>`)

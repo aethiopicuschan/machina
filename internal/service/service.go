@@ -13,7 +13,7 @@ import (
 
 type Service interface {
 	Load(r io.ReadCloser) error
-	Generate() ([]common.Bundle, error)
+	GenerateBundles() ([]common.Bundle, error)
 	Close() error
 }
 

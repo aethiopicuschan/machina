@@ -44,7 +44,7 @@ func TestPythonService(t *testing.T) {
 		s := &python.PythonService{}
 		err := s.Load(io.NopCloser(strings.NewReader(testcase.src)))
 		assert.NoError(t, err)
-		got, err := s.Generate()
+		got, err := s.GenerateBundles()
 		assert.NoError(t, err)
 		assert.Equal(t, testcase.expect, got)
 		s.Close()

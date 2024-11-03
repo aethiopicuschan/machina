@@ -1,7 +1,6 @@
 package common_test
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/aethiopicuschan/machina/internal/service/common"
@@ -28,8 +27,6 @@ func TestGeneral(t *testing.T) {
 	for _, testcase := range testcases {
 		got := testcase.src.String()
 		if got != testcase.expect {
-			fmt.Println(testcase.expect)
-			fmt.Println(got)
 			t.Errorf("expect: %s, got: %s", testcase.expect, got)
 		}
 	}
