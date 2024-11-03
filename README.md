@@ -12,3 +12,9 @@ Machina is a tool that automatically generates configuration files for [Kataribe
 ```sh
 go install github.com/aethiopicuschan/machina@latest
 ```
+
+## Usage
+
+```sh
+machina app.py
+```
