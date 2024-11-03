@@ -43,10 +43,10 @@ func TestPythonService(t *testing.T) {
 	for _, testcase := range testcases {
 		s := &python.PythonService{}
 		err := s.Load(io.NopCloser(strings.NewReader(testcase.src)))
+		defer s.Close()
 		assert.NoError(t, err)
 		got, err := s.GenerateBundles()
 		assert.NoError(t, err)
 		assert.Equal(t, testcase.expect, got)
-		s.Close()
 	}
 }

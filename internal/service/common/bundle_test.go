@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/aethiopicuschan/machina/internal/service/common"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestBundle(t *testing.T) {
@@ -23,8 +24,6 @@ func TestBundle(t *testing.T) {
 
 	for _, testcase := range testcases {
 		got := testcase.src.String()
-		if got != testcase.expect {
-			t.Errorf("expect: %s, got: %s", testcase.expect, got)
-		}
+		assert.Equal(t, testcase.expect, got)
 	}
 }
