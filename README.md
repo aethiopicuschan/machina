@@ -6,6 +6,7 @@
 [![CI](https://github.com/aethiopicuschan/machina/actions/workflows/ci.yaml/badge.svg)](https://github.com/aethiopicuschan/machina/actions/workflows/ci.yaml)
 
 Machina is a tool that automatically generates configuration files for [Kataribe](https://github.com/matsuu/kataribe).
+This tool allows you to generate the necessary bundle based on the provided source code.
 
 ## Installation
 
@@ -16,5 +17,15 @@ go install github.com/aethiopicuschan/machina@latest
 ## Usage
 
 ```sh
-machina app.py
+machina app.py > kataribe.toml
 ```
+
+## Supported languages
+
+- [x] Python(Flask)
+- [ ] Golang
+- [ ] Node.js
+- [ ] Perl
+- [ ] PHP
+- [ ] Ruby
+- [ ] Rust
