@@ -1,0 +1,32 @@
+package common_test
+
+import (
+	"testing"
+
+	"github.com/aethiopicuschan/machina/internal/service/common"
+)
+
+func TestParse(t *testing.T) {
+	testcases := []struct {
+		src    common.Parse
+		expect string
+	}{
+		{
+			src: common.Parse{
+				LogFormat:     `LogFormat`,
+				RequestIndex:  5,
+				StatusIndex:   6,
+				BytesIndex:    7,
+				DurationIndex: 10,
+			},
+			expect: "log_format = 'LogFormat'\nrequest_index = 5\nstatus_index = 6\nbytes_index = 7\nduration_index = 10\n",
+		},
+	}
+
+	for _, testcase := range testcases {
+		got := testcase.src.String()
+		if got != testcase.expect {
+			t.Errorf("expect: %s, got: %s", testcase.expect, got)
+		}
+	}
+}
