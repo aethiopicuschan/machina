@@ -8,6 +8,8 @@
 Machina is a tool that automatically generates configuration files for [Kataribe](https://github.com/matsuu/kataribe).
 This tool allows you to generate the necessary bundle based on the provided source code.
 
+This tool was developed for [ISUCON](https://isucon.net/).
+
 ## Installation
 
 ```sh
