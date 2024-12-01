@@ -11,7 +11,7 @@ import (
 var rootCmd = &cobra.Command{
 	Use:     "machina [source]",
 	Long:    "Machina is automatic generator for kataribe.toml",
-	Version: "0.1.0",
+	Version: "0.0.3",
 	Args:    cobra.MatchAll(cobra.MinimumNArgs(1), cobra.MaximumNArgs(1)),
 	RunE:    run,
 }
