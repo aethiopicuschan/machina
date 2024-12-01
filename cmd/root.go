@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"runtime/debug"
 
 	"github.com/aethiopicuschan/machina/internal/service"
 	"github.com/aethiopicuschan/machina/internal/service/common"
@@ -9,16 +10,19 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:     "machina [source]",
-	Long:    "Machina is automatic generator for kataribe.toml",
-	Version: "0.0.3",
-	Args:    cobra.MatchAll(cobra.MinimumNArgs(1), cobra.MaximumNArgs(1)),
-	RunE:    run,
+	Use:  "machina [source]",
+	Long: "Machina is automatic generator for kataribe.toml",
+	Args: cobra.MatchAll(cobra.MinimumNArgs(1), cobra.MaximumNArgs(1)),
+	RunE: run,
 }
 
 var onlyBundle bool
 
 func init() {
+	bi, ok := debug.ReadBuildInfo()
+	if ok {
+		rootCmd.Version = bi.Main.Version
+	}
 	rootCmd.Flags().BoolVar(&onlyBundle, "only-bundle", false, "Only print the bundles")
 }
 
