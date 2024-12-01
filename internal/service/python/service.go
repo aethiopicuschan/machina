@@ -26,6 +26,7 @@ func (s *PythonService) Load(r io.ReadCloser) (err error) {
 func (s *PythonService) GenerateBundles() (bundles []common.Bundle, err error) {
 	re := regexp.MustCompile(`@app\.route\(\s*[\s\S]*?\)`)
 	re2 := regexp.MustCompile(`@app.route\("([^"]+)",methods=\[([^\]]+)\]`)
+	reNone := regexp.MustCompile(`<(\w+)>`)
 	reStr := regexp.MustCompile(`<string:(\w+)>`)
 	reInt := regexp.MustCompile(`<int:(\w+)>`)
 	matches := re.FindAllString(s.code, -1)
@@ -56,8 +57,10 @@ func (s *PythonService) GenerateBundles() (bundles []common.Bundle, err error) {
 		}
 
 		// Replace the path with regex and param
-		replacedRegex := reStr.ReplaceAllString(path, "[0-9a-zA-Z]+")
-		replacedParam := reStr.ReplaceAllString(path, ":$1")
+		replacedRegex := reNone.ReplaceAllString(path, "[0-9a-zA-Z]+")
+		replacedParam := reNone.ReplaceAllString(path, ":$1")
+		replacedRegex = reStr.ReplaceAllString(replacedRegex, "[0-9a-zA-Z]+")
+		replacedParam = reStr.ReplaceAllString(replacedParam, ":$1")
 		replacedRegex = reInt.ReplaceAllString(replacedRegex, "[0-9]+")
 		replacedParam = reInt.ReplaceAllString(replacedParam, ":$1")
 
